@@ -1,0 +1,54 @@
+<style>
+    body  {
+        background: #f3f7f7;
+    }
+    nav {
+        font-family: 'Fira Code', monospace;
+    }
+    .bg-light {
+        background: #141E30;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .navbar-brand {
+        color: #eeeeee!important;
+        letter-spacing: 1.5px;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+        margin-left: 20px;
+    }
+    .main {
+        width: 90%;
+        margin: 5%;
+
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Learner Bee</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav nav_bar_items" style="margin-right: 30px">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="#">Practice</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" href="">Search</a>-->
+                <!--</li>-->
+            </ul>
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+
+            <button class="btn btn-success" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
