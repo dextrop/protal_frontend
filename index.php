@@ -1,3 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: sid
+ * Date: 4/8/19
+ * Time: 2:43 PM
+ */
+if(!isset($_COOKIE["_token"])) {
+    header("location:login.html");
+} else {
+//    echo $_COOKIE["_token"]. "<br>";
+//    echo $_COOKIE["_name"]. "<br>";
+//    echo $_COOKIE["_email"]. "<br>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -169,17 +185,11 @@
     <h4>Tutorials</h4>
     <div id="tutorials">
 
-<!--        <div class="tutorial-card">-->
-<!--            <h2>Git Tutorial</h2>-->
-<!--            <h5 class="tutorial-description">-->
-<!--                Git is a distributed version-control system for tracking changes in source code during software development.-->
-<!--            </h5>-->
-<!--            <a href="" class="read-tutorial-link">Read Tutorial</a>-->
-<!--        </div>-->
     </div>
 
 </div>
-
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/js-cookie.js"></script>
 <script>
     var tutorials = [
         {
@@ -221,6 +231,8 @@
     }
 
     populateTutorial(tutorials);
+
+    $('#user_name').html(Cookies.get("_name"));
 </script>
 </body>
 </html>

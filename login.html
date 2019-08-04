@@ -78,7 +78,7 @@
             border-color: #FFFFFF;
         }
 
-        form {
+        .form-cus {
             background-color: #FFFFFF;
             display: flex;
             align-items: center;
@@ -263,11 +263,62 @@
             color: #3c97bf;
             text-decoration: none;
         }
+
+        .error {
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            bottom: 1vh;
+            left: 0;
+            z-index: 1000;
+            line-height: 60px;
+            text-align: center;
+            overflow-y: hidden;
+        }
+
+        #error_message {
+            opacity: 0;
+            background: firebrick;
+            color: white;
+            padding: 30px;
+            font-size: 20px;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+        }
+
+        .error-animate {
+            animation: showerror 4s forwards;
+        }
+
+        @keyframes showerror {
+            0% {
+                margin-top: 2vh;
+                opacity: 0;
+            }
+            25% {
+                margin-top: 0;
+                opacity: 1;
+            }
+
+            75% {
+                margin-top: 0;
+                opacity: 1;
+            }
+
+            100% {
+                margin-top: 2vh;
+                opacity: 0;
+            }
+        }
     </style>
 <body>
+<div class="error">
+    <span id="error_message">
+        Uable to login
+    </span>
+</div>
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <div class="form-cus">
             <input type="text" placeholder="Name" id="name"/>
             <input type="text" placeholder="Collage Name" id="collage_name"/>
             <select id="sem" class="form-control">
@@ -281,19 +332,19 @@
             </select>
             <input type="email" placeholder="Email" id="email"/>
             <input type="password" placeholder="Password" id="password"/>
-            <button>Sign Up</button>
-        </form>
+            <button onclick="signup()">Sign Up</button>
+        </div>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <div class="form-cus">
             <h1>Sign in</h1>
             <br><br>
             <input type="email" placeholder="Email" id="email_login"/>
             <input type="password" placeholder="Password" id="password_login"/>
             <br><br>
             <!--<a href="#">Forgot your password?</a>-->
-            <button>Sign In</button>
-        </form>
+            <button onclick="login()">Sign In</button>
+        </div>
     </div>
     <div class="overlay-container">
         <div class="overlay">
@@ -310,6 +361,7 @@
         </div>
     </div>
 </div>
+
 <script>
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -323,6 +375,8 @@
         container.classList.remove("right-panel-active");
     });
 </script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/js-cookie.js"></script>
 <script>
     
     function validation_login() {
@@ -332,15 +386,19 @@
         };
 
         if (data["email"].length < 5) {
+            showerror("Invalid Email");
             return false;
         }
 
         if (data["password"].length < 6) {
+            showerror("Password should be greated than 5 characters");
             return false;
         }
+
+        return data;
     }
 
-    function validation_signUP() {
+    function validation_signup() {
         var data = {
             "email": document.getElementById("email").value,
             "password": document.getElementById("password").value,
@@ -350,28 +408,77 @@
         };
 
         if (data["email"].length < 5) {
+            showerror("Invalid Email");
             return false;
         }
 
         if (data["password"].length < 6) {
+            showerror("Password should be greated than 5 characters");
             return false;
         }
 
         if (data["name"].length < 3) {
+            showerror("Invalid Name");
             return false;
         }
 
         if (data["collage_name"].length < 5) {
+            showerror("Invalid Collage Name");
             return false;
         }
+
+        return data;
     }
     function login() {
         // get elements
+        var data = validation_login();
+        $.ajax({
+            url: "https://api.learnerbee.in/v1/login/",
+            type: 'POST',
+            beforeSend: function (request) {
+                request.setRequestHeader("Content-Type", "application/json");
+            },
+            data: JSON.stringify(data),
+            success: function (resp_crm) {
+                Cookies.set("_token", resp_crm["payload"]["token"]);
+                Cookies.set("_email", resp_crm["payload"]["email"]);
+                Cookies.set("_name", resp_crm["payload"]["name"]);
+                window.location.href = "index.php";
 
+            }, error: function (message) {
+                try {
+                    showerror(message.responseJSON["message"]);
+                } catch (e) {
+                    showerror("Something went wrong");
+                }
+                console.log(message);
+            }, async: false
+        });
     }
 
     function signup() {
+        var data = validation_signup();
+        $.ajax({
+            url: "https://api.learnerbee.in/v1/create/user/",
+            type: 'POST',
+            beforeSend: function (request) {
+                request.setRequestHeader("Content-Type", "application/json");
+            },
+            data: JSON.stringify(data),
+            success: function (resp_crm) {
+                window.location.href = "registration_success.html";
+            }, error: function (message) {
 
+            }, async: false
+        });
+    }
+
+    function showerror(message) {
+        $('#error_message').addClass("error-animate");
+        $('#error_message').html(message);
+        setTimeout(function () {
+            $('#error_message').removeClass("error-animate");
+        }, 4050)
     }
 </script>
 </body>
