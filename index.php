@@ -8,9 +8,6 @@
 if(!isset($_COOKIE["_token"])) {
     header("location:login.html");
 } else {
-//    echo $_COOKIE["_token"]. "<br>";
-//    echo $_COOKIE["_name"]. "<br>";
-//    echo $_COOKIE["_email"]. "<br>";
 }
 ?>
 
@@ -195,24 +192,7 @@ if(!isset($_COOKIE["_token"])) {
         {
             "name": "Git",
             "des": "Git is a distributed version-control system for tracking changes in source code during software development.",
-            "link": "https://docs.google.com/document/d/11Y9L5xZRqy7asyeWbuoa4jDQqpfGEkLzxj8E0fG_GYk/edit?usp=sharing"
-        },
-        {
-            "name": "Python Basic",
-            "des": "Print methods, for loop, Dict array etc. A short python lesson before starting python",
-            "link": "https://docs.google.com/document/d/1IGVhHdQ6mXhDFLdP3i3KSvEqPyBxrZHJSSEEAfnS8U8/edit?usp=sharing"
-        },
-
-        {
-            "name": "Python Basic",
-            "des": "Print methods, for loop, Dict array etc. A short python lesson before starting python",
-            "link": "https://docs.google.com/document/d/1IGVhHdQ6mXhDFLdP3i3KSvEqPyBxrZHJSSEEAfnS8U8/edit?usp=sharing"
-        },
-
-        {
-            "name": "Api creation",
-            "des": "Go ahead and create a django application, Django application is the basic application which will serve all our api’s.",
-            "link": "https://docs.google.com/document/d/1AP1YO-Ax1tkwufPtmen6Zy14NLeERDFyD5WqHhC3uSc/edit?usp=sharing"
+            "link": "tutorials/git-basic.php"
         }
     ];
     function populateTutorial(tutorials) {
