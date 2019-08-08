@@ -21,8 +21,9 @@ if(!isset($_COOKIE["_token"])) {
         }
 
         .main {
-            width: 80%!important;
-            margin-left: 10%!important;
+            width: 96%!important;
+            margin-left: 2%!important;
+            padding-top: 40px;
         }
         .code {
             font-family: 'Inconsolata', monospace;
@@ -53,10 +54,12 @@ if(!isset($_COOKIE["_token"])) {
             margin-top: 30px;
             margin-bottom: 30px;
         }
-        
+
         h1 {
             margin-top: 30px;
             margin-bottom: 30px;
+            width:100%;
+            text-align:center;
         }
         .table-bordered {
             border: 1px solid black;
@@ -65,42 +68,78 @@ if(!isset($_COOKIE["_token"])) {
             color: #212529;
             background-color: rgba(0,0,0,.075);
         }
-        
+
         .image-tutorials {
             width: 80%;
             margin-left:10%;
             margin-top:40px;
-            margin-bottom:40px;           
+            margin-bottom:40px;
         }
         p {
             line-height: 25px;
             font-size: 18px;
         }
-        
+
         .copy_button {
             font-size: 14px;
             background: none;
             border: none;
             color: cadetblue;
         }
+        .main-sidebar {
+            position: fixed;
+            padding-top: 80px;
+            left: 0;
+            width: 17%;
+            background-color: #1D1C21;
+            height: 100vh;
+
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-menu li {
+            padding: 10px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            color: white;
+            cursor: pointer;
+        }
+        .sidebar-menu li:hover {
+            background: #DDDDDD;
+            color: #243B55;
+        }
     </style>
+    <script>
+        var title_page = "Git Basic"
+    </script>
 </head>
 <body>
 <?php include ('../assets/html/navbar.html') ?>
-<div class="main">
-<h1>Git Basic</h1>
+<div class="row" style="margin: 0">
+    <div class="col-md-2">
+        <div class="main-sidebar">
+            <ul class="sidebar-menu">
+                <li onclick='gotosection("heading_1")'>Start With Git</li><li onclick='gotosection("heading_2")'>Git Branch flow</li><li onclick='gotosection("heading_3")'>Simple Use Case</li><li onclick='gotosection("heading_4")'>Git Merge Conflict</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="main">
+            <h1>Git Basic</h1>
 <p>Git is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows</p>
 <p></p>
-<h2>Start With Git</h2>
+<h2 id='heading_1'>Start With Git</h2>
 <p></p>
 <p>To initialize git in a folder, go inside folder and type :</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:cd folder_name
 $:git init
 </pre></div>
 <p></p>
 <p>As soon as we initialize git in a folder we can see .git folder created inside the directory</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:ls -a
 .  .. .git
 </pre></div>
@@ -120,12 +159,12 @@ $:ls -a
 <p></p>
 <p>Now we will add remote address in our local git repository. Replace <link_to_repo> with your repository link copied previously</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git remote add origin <link_to_repo>
 </pre></div>
 <p></p>
 <p>Type git status to see the status of out git repository</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git status
 
 On branch master
@@ -133,7 +172,7 @@ nothing to commit, working directory clean
 </pre></div>
 <p></p>
 <p>Now we are going to create a file inside folder and then check git status.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:touch a.txt
 $:git status
 
@@ -151,7 +190,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>We can see there is an untracked file inside folder.</p>
 <p>Now we gonna add this file to git</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git add a.txt
 $:git status
 
@@ -167,7 +206,7 @@ Changes to be committed:
 <p>we can see the new file is added to git.</p>
 <p>Before pushing changes to remote server we will make a commit with message</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git commit -am "Added a.txt file"
 
 [master 9ce3df0] Added a.txt file
@@ -182,22 +221,22 @@ Your branch is ahead of 'origin/master' by 1 commit.
 </pre></div>
 <p></p>
 <p>After git status we can see there is one pending commit that needed to be pushed on server.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git push origin [branch_name]
 </pre></div>
 <h3>Git checkout</h3>
 <p>To create a new branch use:</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git checkout -b [branch_name]
 </pre></div>
 <p></p>
 <p>To checkout other branch which is already created:</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git checkout [branch_name]
 </pre></div>
 <p></p>
 <p>To delete all changes from a file:</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git checkout file_name
 </pre></div>
 <p></p>
@@ -206,16 +245,16 @@ $:git checkout file_name
 <p>Usecase: When a person is working on a branch, have not committed his changes yet. If he/she has to go to some other branch either he has to commit his changes or he can you git stash to save changes in a local stack.</p>
 <p></p>
 <p>*We cannot switch branch if we have uncommitted changed in our local repo.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git stash
 </pre></div>
 <p></p>
 <p>To get back our last change from git stash we use</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git stash pop
 </pre></div>
 <p></p>
-<h2>Git Branch flow</h2>
+<h2 id='heading_2'>Git Branch flow</h2>
 <p>A successful branch flow will consists of two main branches with an infinite lifetime.</p>
 <p></p>
 <div class='tb_content'><table class='table table-bordered'>
@@ -249,7 +288,7 @@ $:git stash pop
 	</tr>
 </table></div>
 <p></p>
-<h2>Simple Use Case</h2>
+<h2 id='heading_3'>Simple Use Case</h2>
 <p>Lets consider a simple use case to see how Git Branch Flow works.</p>
 <p></p>
 <p>Lets suppose a person has to develop a portal with login and a single page dashboard which shows data from backend.</p>
@@ -259,26 +298,26 @@ $:git stash pop
 <p>He cuts a branch from develop branch named as feature/login_page.</p>
 <p>Code for creating a new branch:</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 git checkout -b feature/login_page
 </pre></div>
 <p></p>
 <p>further on he completes the login page. Then he goes back to develop branch and merge the login_page branch into develop.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 git checkout develop
 git merge feature/login_page
 </pre></div>
 <p></p>
 <p>After testing when login page is working fine on develop branch, He merge the develop branch into master.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 git checkout master
 git merge develop
 </pre></div>
 <p></p>
 <p>Similarly he does it for man dashboard page.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 git checkout develop
 git checkout -b feature/dashboard_page
 
@@ -300,7 +339,7 @@ git checkout master
 git merge develop
 </pre></div>
 <p></p>
-<h2>Git Merge Conflict</h2>
+<h2 id='heading_4'>Git Merge Conflict</h2>
 <p></p>
 <h3>Why Merge Conflict occurs?</h3>
 <p></p>
@@ -308,7 +347,7 @@ git merge develop
 <p></p>
 <p>eg:</p>
 <p>Lets suppose we have a piece of code in our branch feature/code_1</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 def main(val):
     if (val > 30):
         print "Value is too high"
@@ -318,7 +357,7 @@ def main(val):
 <p></p>
 <p>and in branch feature/code_2</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 def main(val):
     if (val > 90):
         print "Value is too high"
@@ -327,13 +366,13 @@ def main(val):
 </pre></div>
 <p></p>
 <p>When we try to merge feature/code_1 and feature/code_2 conflicts comes</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 get checkout feature/code_1
 get merge feature/code_2
 </pre></div>
 <h3>Conflict</h3>
 <p>As soon as we merge we can see conflict has occured.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 $:git checkout feature/code_1
 $:git merge feature/code_2
 
@@ -343,7 +382,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 </pre></div>
 <p></p>
 <p>If we go and look into the files we can see the file main.py have conflict.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 def main(val):
 <<<<<<< HEAD
     if (val > 30):
@@ -356,14 +395,14 @@ def main(val):
 </pre></div>
 <p></p>
 <p>The value between</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 <<<<<<< HEAD
     if (val > 30):
 =======
 </pre></div>
 <p></p>
 <p>indicates modification from current branch while value between</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 =======
     if (val > 90):
 >>>>>>> feature/branch_2
@@ -373,7 +412,7 @@ def main(val):
 <p></p>
 <p>One way to solve the conflict is to directly remove the code which we dont want. In my case I want value from feature/branch_2</p>
 <p>so my final code will be</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 
 def main(val):
     if (val > 90):
@@ -382,7 +421,7 @@ def main(val):
         print "Value is normal"
 </pre></div>
 <p>I have deleted below line.</p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 def main(val):
 <<<<<<< HEAD
     if (val > 30):
@@ -393,7 +432,7 @@ def main(val):
 <p></p>
 <p>After doing so I am going to add this file again, and make a commit and push it to my branch whosoever I want to push.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1564990665-08'>
+<div class='code'><pre id='copy-code-1565284867-64'>
 git add main.py
 git commit -am "Merged with feature/branch_2 and resolved commit"
 git push origin <branch_name>
@@ -437,7 +476,11 @@ git push origin <branch_name>
 <p>As soon as merge is completed, click apply make commit and push.</p>
 <img src='../assets/images/git-tutorial/7.png' class='image-tutorials'>
 
+        </div>
+    </div>
 </div>
+
+
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/js-cookie.js"></script>
 <script>
@@ -462,6 +505,12 @@ git push origin <branch_name>
     }
 
     $('#user_name').html(Cookies.get("_name"));
+
+    function gotosection(id) {
+        $('html,body').animate({
+            scrollTop: parseInt(($('#' + id).offset().top - 70))
+        });
+    }
 </script>
 </body>
 </html>

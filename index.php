@@ -187,19 +187,14 @@ if(!isset($_COOKIE["_token"])) {
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/js-cookie.js"></script>
+<script src="tutorials/tutorials.js"></script>
 <script>
-    var tutorials = [
-        {
-            "name": "Git",
-            "des": "Git is a distributed version-control system for tracking changes in source code during software development.",
-            "link": "tutorials/git-basic.php"
-        }
-    ];
+
     function populateTutorial(tutorials) {
         var html = "";
         for (var i=0; i<tutorials.length; i++) {
             html += '<div class="tutorial-card">' +
-                '            <h2>'+tutorials[i]["name"]+'</h2>' +
+                '            <h2 style="font-size: 20px">'+tutorials[i]["name"]+'</h2>' +
                 '            <h5 class="tutorial-description">' +
                 tutorials[i]["des"] +
                 '            </h5>' +

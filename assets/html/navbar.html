@@ -4,11 +4,19 @@
     }
     nav {
         font-family: 'Fira Code', monospace;
+
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 60px!important;
     }
     .bg-light {
-        background: #141E30;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #37718E!important;
     }
     .navbar-brand {
         color: #eeeeee!important;
@@ -23,9 +31,15 @@
         margin: 5%;
 
     }
+    #page-title {
+        font-size: 14px;
+        letter-spacing: 1px;
+        word-spacing: 0;
+        font-family: sans-serif;
+    }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Learner Bee</a>
+    <a class="navbar-brand" href="#">Learner Bee <span id="page-title"></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,18 +54,16 @@
                     <a class="nav-link">Welcome, <span id="user_name"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="https://portal.learnerbee.in/">Home</a>
                 </li>
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="#">Practice</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item">-->
-                    <!--<a class="nav-link" href="">Search</a>-->
-                <!--</li>-->
             </ul>
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-
-            <a href="logout.html" class="btn btn-success" type="submit">Logout</a>
+            <a href="https://portal.learnerbee.in/logout.html" class="btn btn-success" type="submit">Logout</a>
         </form>
     </div>
 </nav>
+
+<script>
+    if (typeof (title_page) !== "undefined") {
+        document.getElementById("page-title").innerText = "- " + title_page;
+    }
+</script>
