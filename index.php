@@ -132,6 +132,11 @@ if(!isset($_COOKIE["_token"])) {
 <?php include ('assets/html/navbar.html') ?>
 <div class="main">
 
+    <h4>Tutorials</h4>
+    <div id="tutorials">
+
+    </div>
+    <br><br>
     <h4>Skills</h4>
     <div class="practice-card">
         <div class="row">
@@ -176,12 +181,6 @@ if(!isset($_COOKIE["_token"])) {
         </div>
         <p class="skill-description">0% Start Practicing Your JSON</p>
         <button class="btn btn-outline-success" style="border-radius: 0; margin-left: 70%" disabled>Coming Soon</button>
-    </div>
-
-    <br><br>
-    <h4>Tutorials</h4>
-    <div id="tutorials">
-
     </div>
 
 </div>
