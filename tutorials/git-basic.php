@@ -133,13 +133,13 @@ if(!isset($_COOKIE["_token"])) {
 <h2 id='heading_1'>Start With Git</h2>
 <p></p>
 <p>To initialize git in a folder, go inside folder and type :</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:cd folder_name
 $:git init
 </pre></div>
 <p></p>
 <p>As soon as we initialize git in a folder we can see .git folder created inside the directory</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:ls -a
 .  .. .git
 </pre></div>
@@ -159,12 +159,12 @@ $:ls -a
 <p></p>
 <p>Now we will add remote address in our local git repository. Replace <link_to_repo> with your repository link copied previously</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git remote add origin <link_to_repo>
 </pre></div>
 <p></p>
 <p>Type git status to see the status of out git repository</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git status
 
 On branch master
@@ -172,7 +172,7 @@ nothing to commit, working directory clean
 </pre></div>
 <p></p>
 <p>Now we are going to create a file inside folder and then check git status.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:touch a.txt
 $:git status
 
@@ -190,7 +190,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>We can see there is an untracked file inside folder.</p>
 <p>Now we gonna add this file to git</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git add a.txt
 $:git status
 
@@ -206,7 +206,7 @@ Changes to be committed:
 <p>we can see the new file is added to git.</p>
 <p>Before pushing changes to remote server we will make a commit with message</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git commit -am "Added a.txt file"
 
 [master 9ce3df0] Added a.txt file
@@ -221,22 +221,22 @@ Your branch is ahead of 'origin/master' by 1 commit.
 </pre></div>
 <p></p>
 <p>After git status we can see there is one pending commit that needed to be pushed on server.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git push origin [branch_name]
 </pre></div>
 <h3>Git checkout</h3>
 <p>To create a new branch use:</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git checkout -b [branch_name]
 </pre></div>
 <p></p>
 <p>To checkout other branch which is already created:</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git checkout [branch_name]
 </pre></div>
 <p></p>
 <p>To delete all changes from a file:</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git checkout file_name
 </pre></div>
 <p></p>
@@ -245,12 +245,12 @@ $:git checkout file_name
 <p>Usecase: When a person is working on a branch, have not committed his changes yet. If he/she has to go to some other branch either he has to commit his changes or he can you git stash to save changes in a local stack.</p>
 <p></p>
 <p>*We cannot switch branch if we have uncommitted changed in our local repo.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git stash
 </pre></div>
 <p></p>
 <p>To get back our last change from git stash we use</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git stash pop
 </pre></div>
 <p></p>
@@ -298,26 +298,26 @@ $:git stash pop
 <p>He cuts a branch from develop branch named as feature/login_page.</p>
 <p>Code for creating a new branch:</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 git checkout -b feature/login_page
 </pre></div>
 <p></p>
 <p>further on he completes the login page. Then he goes back to develop branch and merge the login_page branch into develop.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 git checkout develop
 git merge feature/login_page
 </pre></div>
 <p></p>
 <p>After testing when login page is working fine on develop branch, He merge the develop branch into master.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 git checkout master
 git merge develop
 </pre></div>
 <p></p>
 <p>Similarly he does it for man dashboard page.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 git checkout develop
 git checkout -b feature/dashboard_page
 
@@ -347,7 +347,7 @@ git merge develop
 <p></p>
 <p>eg:</p>
 <p>Lets suppose we have a piece of code in our branch feature/code_1</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 def main(val):
     if (val > 30):
         print "Value is too high"
@@ -357,7 +357,7 @@ def main(val):
 <p></p>
 <p>and in branch feature/code_2</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 def main(val):
     if (val > 90):
         print "Value is too high"
@@ -366,13 +366,13 @@ def main(val):
 </pre></div>
 <p></p>
 <p>When we try to merge feature/code_1 and feature/code_2 conflicts comes</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 get checkout feature/code_1
 get merge feature/code_2
 </pre></div>
 <h3>Conflict</h3>
 <p>As soon as we merge we can see conflict has occured.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:git checkout feature/code_1
 $:git merge feature/code_2
 
@@ -382,7 +382,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 </pre></div>
 <p></p>
 <p>If we go and look into the files we can see the file main.py have conflict.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 def main(val):
 <<<<<<< HEAD
     if (val > 30):
@@ -395,14 +395,14 @@ def main(val):
 </pre></div>
 <p></p>
 <p>The value between</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 <<<<<<< HEAD
     if (val > 30):
 =======
 </pre></div>
 <p></p>
 <p>indicates modification from current branch while value between</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 =======
     if (val > 90):
 >>>>>>> feature/branch_2
@@ -412,7 +412,7 @@ def main(val):
 <p></p>
 <p>One way to solve the conflict is to directly remove the code which we dont want. In my case I want value from feature/branch_2</p>
 <p>so my final code will be</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 
 def main(val):
     if (val > 90):
@@ -421,7 +421,7 @@ def main(val):
         print "Value is normal"
 </pre></div>
 <p>I have deleted below line.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 def main(val):
 <<<<<<< HEAD
     if (val > 30):
@@ -432,7 +432,7 @@ def main(val):
 <p></p>
 <p>After doing so I am going to add this file again, and make a commit and push it to my branch whosoever I want to push.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 git add main.py
 git commit -am "Merged with feature/branch_2 and resolved commit"
 git push origin <branch_name>

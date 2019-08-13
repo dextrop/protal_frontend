@@ -131,7 +131,7 @@ if(!isset($_COOKIE["_token"])) {
 <p></p>
 <h2 id='heading_1'>Create Django Project</h2>
 <p>Go ahead and create a django project. Use below command to start a new project.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 django-admin startproject sample_project
 </pre></div>
 <p></p>
@@ -153,7 +153,7 @@ django-admin startproject sample_project
 <p>** The above command will create a folder sample_project, This is our django project.</p>
 <p>Open project with pycharm, The directory structure should now look like this.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 sample_project/
    manage.py
    sample_project/
@@ -196,7 +196,7 @@ sample_project/
 <p>Now we gonna create a custom application for django. To create an custom application in django we will create a python folder named as src.</p>
 <p>As soon as we have created a python package named as src we need to add this python project to our django application.</p>
 <p>To do so open sample_project/settings.py and add application</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 .
 .
 INSTALLED_APPS = [
@@ -217,7 +217,7 @@ INSTALLED_APPS = [
 <p>Models are nothing but database tables.</p>
 <p>To create models we need to first create a python package inside src folder. The name for this package will be models</p>
 <p>after creating models package our application directory structure would be</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 sample_project/
     sample_project/
     __init__.py
@@ -235,7 +235,7 @@ manage.py
 <p>So we will create model users. To create model we will create a users.py inside src/models/</p>
 <p>And add below code to our users.py model.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from django.db import models
 
 class Users(models.Model):
@@ -258,7 +258,7 @@ class Users(models.Model):
 </pre></div>
 <p></p>
 <p>class Users represents sample_table. The Class is inherited from models.Model class in django. The below codes represent columns of the table. There can be different types of columns in a database.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
    id      = models.AutoField(primary_key=True)
    name    = models.CharField(max_length=50, default="N/A")
    email_id    = models.CharField(max_length=50, default="N/A")
@@ -269,13 +269,13 @@ class Users(models.Model):
 </pre></div>
 <p>Copy function save in the same format. Just replace Users with your table Class name.</p>
 <p>If you want customized saving behavior, you can override this save() method. See Overriding predefined model methods for more details.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
    def save(self, *args, **kwargs):
        return super(Users, self).save(*args, **kwargs)
 </pre></div>
 <p></p>
 <p>While the __unicode__ function is used when we want to fetch any row from database. When we fetch a row , the elements inside row is linked with a reference and through the reference we can fetch table row. We are passing id as reference for table</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
    def save(self, *args, **kwargs):
        return super(Users, self).save(*args, **kwargs)
 
@@ -295,19 +295,19 @@ class Users(models.Model):
 <p></p>
 <p>Now our Users structure is made, Now we need to import this table to our models.</p>
 <p>To do so open models/__init__.py and import users.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from src.models.users import Users
 </pre></div>
 <p></p>
 <p>To create the database we need to do migrations and then have to apply the migrations.</p>
 <p>Open terminal and type following commands</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 python manage.py makemigrations sample_app
 </pre></div>
 <p></p>
 <p>The above command create migration. This is done to make sure all migrations before they are applied can be checked, Also it creates a migrations script inside migrations folder, python manage.py is the calling function while makemigrations is subcommand and sample_app is the name of the app for whom we want apply migrations for.</p>
 <p>After all migrations has successfully compiled, we will migrate</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 python manage.py migrate
 </pre></div>
 <p></p>
@@ -315,19 +315,19 @@ python manage.py migrate
 <p>The main purpose of creating a custom response are</p>
 <ul class='list_ul'><li class='list_li'>Having same structure for response thought the API</li><li class='list_li'>Easy Error Handling</li></ul>
 <p></p>
-<p>This custom response will help our api, So in that case we gonna create a api_helper python package and create a new file in API helper named as custom_response.py</p>
+<p>This custom response will help our api, So in that case we gonna create a api_helper python package inside src and create a new file in API helper named as custom_response.py</p>
 <p></p>
 <p>after creating api_helper and custom_response.py inside api helper our directory structure would be</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
-api_helper/
-    __init__.py
-    custom_response.py
+<div class='code'><pre id='copy-code-1565721333-44'>
 sample_project/
     __init__.py
     settings.py
     urls.py
     wsgi.py
 src/
+    api_helper/
+        __init__.py
+        custom_response.py
     models/
         __init__.py
         users.py
@@ -336,7 +336,7 @@ manage.py
 </pre></div>
 <p></p>
 <p>Open custom_response.py and write the below code inside it</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 
@@ -359,7 +359,7 @@ class CustomResponse(Response):
 <p>This custom response will always return any response weather be success or failure in a similar manner.</p>
 <p>The format for the above custom response is.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 {
     "status": True/False,
     "payload": [All Data what we want to give to user will be shown here, Data can be a string or array or json object based on api need],
@@ -370,19 +370,19 @@ class CustomResponse(Response):
 <p>For now custom response is create, We will use this custom response once our view is created.</p>
 <p></p>
 <h2 id='heading_5'>Custom Exceptional Handler</h2>
-<p>This custom exceptional handler will help our api, So in that case we gonna create a api_helper python package and create a new file in API helper named as custom_exception_handler.py</p>
+<p>This custom exceptional handler will help our api, So in that case we gonna create  a new file in api_helper package named as custom_exception_handler.py</p>
 <p>after creating api_helper and custom_exception_handler.py inside api helper our directory structure would be</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
-api_helper/
-    __init__.py
-    custom_response.py
-    custom_exception_handler.py
+<div class='code'><pre id='copy-code-1565721333-44'>
 sample_project/
     __init__.py
     settings.py
     urls.py
     wsgi.py
 src/
+    api_helper/
+        __init__.py
+        custom_response.py
+        custom_exception_handler.py
     models/
         __init__.py
         users.py
@@ -391,7 +391,7 @@ manage.py
 </pre></div>
 <p></p>
 <p>Open custom_exception_handler.py and write the below code inside it</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR
 from src.api_helper.customresponse import CustomResponse
 
@@ -430,7 +430,7 @@ def custom_handler(excpetion_object, context):
 <p></p>
 <p>Once the exception handler is created, we need to add this to our settings.py</p>
 <p>to do so open and edit setting.py and add below piece of code.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'src.api_helper.custom_exception_handler.custom_handler'
@@ -449,7 +449,7 @@ REST_FRAMEWORK = {
 <p></p>
 <p>Let start, create a python package named as libraries inside src folder. This python package will hold all our controllers logic.</p>
 <p>Inside libraries create userlib.py and write below piece of code</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 class UserLib():
     def __init__(self):
         print "Initialized User Lib"
@@ -466,7 +466,7 @@ class UserLib():
 <p>As you can see I have created a python class with method as createUser, All our logic for creating a user will be stored in this create user method.</p>
 <p>For now this method accept user_info in which user information will be stored in format of json.</p>
 <p>The user_info is a dictionary with keys as below</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 {
 "name": "Saurabh Pandey",
 "age": 28,
@@ -478,7 +478,7 @@ class UserLib():
 <p>We will require to add a validation method which will check the user information for missing key, and also check if user is already present in Db.</p>
 <p>After validation is done we will hash password and store user in database.</p>
 <p>We will not store password directly in string in database as its not a safe and standard method to follow.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from django.core.exception import ValidationError
 from src.models import Users
 
@@ -548,7 +548,7 @@ class UserLib():
 <p>For login library we need to have a table Token that will store token related to users.</p>
 <p>Create a model tokens.py inside models/ and write below piece of code.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from django.db import models
 from src.models.users import Users
 import os, binascii
@@ -588,7 +588,7 @@ class Token(models.Model):
 </pre></div>
 <p></p>
 <p>import the above token class in models/__init__.py</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 .
 .
 from src.models.tokens import Token
@@ -596,7 +596,7 @@ from src.models.tokens import Token
 <p></p>
 <p>To create login we will create a new controller named as loginlib.py inside libraries.</p>
 <p>create file loginlib.py and write this piece of code.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from src.models import Users, Token
 import binascii, os, hashlib
 from django.core.exceptions import ValidationError
@@ -681,7 +681,7 @@ class LoginLib():
 <p>to create view we will first create views python package inside src and add userview.py in the same.</p>
 <p>inside userview.py write this piece of code.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from src.libraries.userlib import UserLib
@@ -702,7 +702,7 @@ class UserView(APIView):
 <p>In case of error it automatically raises error. Once done, We will return success with our custom response</p>
 <p></p>
 <p>This then will be added in urls, open urls.py and add this piece of code in it.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 .
 .
 .
@@ -719,14 +719,14 @@ urlpatterns = [
 </pre></div>
 <p></p>
 <p>Then we can run our api using</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 python manage.py runserver 0.0.0.0:8081
 </pre></div>
 <p></p>
 <p>Try to call post method on http://localhost:8081/user/, where 8081 is port running, /user/ is endpoint attach to user view</p>
 <p>This method will accept data as json.</p>
 <p>To Test api, we will write a test file</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 import requests
 
 def testUserAPI():
@@ -750,7 +750,7 @@ testUserAPI()
 <p>to create loginview.py in the src/views/.</p>
 <p>inside loginview.py write this piece of code.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from src.libraries.loginlib import LoginLib
@@ -771,7 +771,7 @@ class LoginView(APIView):
 <p>In case of error it automatically raises error. Once done, We will return success with our custom response including token</p>
 <p></p>
 <p>This then will be added in urls, open urls.py and add this piece of code in it.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 .
 .
 .
@@ -794,7 +794,7 @@ urlpatterns = [
 <h2 id='heading_9'>Create Custom Authentication</h2>
 <p>Create a custom authntication class</p>
 <p>create a file custom_authentication.py inside api_helper and write below code</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from src.models import Users, Token
 from rest_framework import authentication, exceptions
 
@@ -823,7 +823,7 @@ class TokenAuthentication(authentication.BaseAuthentication):
 <p>The above code will check if token is provided or not.</p>
 <p>To use it for base authentication inside api we need to configure it inside our django project</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'src.api_helper.custom_exception_handler.custom_handler'
     'DEFAULT_AUTHENTICATION_CLASSES': 'src.api_helper.custom_authentication.TokenAuthentication'
@@ -831,7 +831,7 @@ REST_FRAMEWORK = {
 </pre></div>
 <p></p>
 <p>create custom permission class inside api_helper.py and add below code in it</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from rest_framework import permissions
 
 class IsAuthenticated(permissions.BasePermission):
@@ -847,7 +847,7 @@ class IsAuthenticated(permissions.BasePermission):
 <p>We will now create a sample api that will return success if right token is passed.</p>
 <p>create a file sample_auth_view.py inside views/ and write below code</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 from rest_framework.views import APIView
 from src.api_helper.customresponse import CustomResponse
 from rest_framework.status import HTTP_200_OK

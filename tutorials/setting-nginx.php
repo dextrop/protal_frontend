@@ -135,7 +135,7 @@ if(!isset($_COOKIE["_token"])) {
 <p>Before we start setting up nginx we need to make sure our system package manager is updated.</p>
 <p>To update package manager and install nginx use.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo apt-get update
 $:sudo apt-get install nginx -y
 $:sudo service nginx start
@@ -146,7 +146,7 @@ $:sudo service nginx start
 <p>The third command will start nginx</p>
 <p>Nginx is a service to start,stop,restart or view status of service we use</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo service service_name start/stop/restart/status
 </pre></div>
 <p></p>
@@ -157,7 +157,7 @@ $:sudo service service_name start/stop/restart/status
 <p></p>
 <p>Now we have to create our own nginx configuration.</p>
 <p>first we will create folder where all our web server files will be placed. and use pwd command to get path of our folder.</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 mkdir localserver
 cd localserver
 pwd
@@ -166,13 +166,13 @@ pwd
 <p>Removing old nginx configuration</p>
 <p>our nginx is listening on port 80 (HTTP port) by default we will open nginx configration and change this post to something else.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 sudo vim /etc/nginx/sites-available/default
 </pre></div>
 <p></p>
 <p>we need to open file with sudo else we will not have the permission to change any configuration inside it.</p>
 <p>code inside default</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 ##
 .
 .
@@ -190,12 +190,12 @@ server {
 <p></p>
 <p>Now we gonna create our new configuration</p>
 <p>create configuration file</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo vim /etc/nginx/conf.d/default.conf
 </pre></div>
 <p></p>
 <p>and write below code inside and save it</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 server {
     listen 80;
     listen [::]:80;
@@ -212,7 +212,7 @@ server {
 </pre></div>
 <p></p>
 <p>In the above configuration</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
     # we are telling nginx to start listening to server on port 80
     listen 80;
     listen [::]:80;
@@ -238,7 +238,7 @@ server {
 <p>create a index.html file inside and write something on it.</p>
 <p>Restart Nginx.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo service nginx restart
 </pre></div>
 <p></p>
@@ -249,14 +249,14 @@ $:sudo service nginx restart
 <h2 id='heading_2'>PHP Installation & Setup</h2>
 <p>To install all component of php for nginx use below command</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 sudo apt-get install php-fpm php-mysql -y
 </pre></div>
 <p></p>
 <p>Once done all component required for php is installed. Now we have to configure our localhost to server php files.</p>
 <p>open /etc/nginx/conf.d/default.conf and add these line to configure php.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 server {
         listen 80;
         listen [::]:80;
@@ -288,13 +288,13 @@ server {
 <p></p>
 <h2 id='heading_3'>Mysql Installation & Setup</h2>
 <p>To install mysql</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo apt-get install mysql-server -y
 </pre></div>
 <p></p>
 <p>This will install nginx for us.</p>
 <p>Now we need to configure nginx</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo mysql_secure_installation
 
 Remove anonymous users? (Press y|Y for Yes, any other key for No) : Y
@@ -331,7 +331,7 @@ All done!
 </pre></div>
 <p></p>
 <p>Once the configuration is completed, we can check mysql using</p>
-<div class='code'><pre id='copy-code-1565507731-86'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 $:sudo mysql -u root -p
 </pre></div>
 <p></p>

@@ -133,13 +133,13 @@ if(!isset($_COOKIE["_token"])) {
 <p>1. Django</p>
 <p></p>
 <p>To install above dependencies:</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 sudo pip install django
 </pre></div>
 <p></p>
 <h2 id='heading_2'>Project Setup</h2>
 <p>Go ahead and create a django project. Use below command to start a new project.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 django-admin startproject sample_project
 </pre></div>
 <p></p>
@@ -161,7 +161,7 @@ django-admin startproject sample_project
 <p>** The above command will create a folder sample_project, This is our django project.</p>
 <p>Open project with pycharm, The directory structure should now look like this.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 sample_project/
    manage.py
    sample_project/
@@ -202,7 +202,7 @@ sample_project/
 <p></p>
 <h2 id='heading_3'>Creating an application</h2>
 <p>Go ahead and create a django application, Django application is the basic application which will serve all our api's. In a single Django project we can have multiple application based on usage.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 django-admin startapp sample_app
 </pre></div>
 <p></p>
@@ -223,7 +223,7 @@ django-admin startapp sample_app
 <p></p>
 <p>** The above command will create a folder sample_project, This is our django project.</p>
 <p>Open project with pycharm, The directory structure should now look like this.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 sample_project/
    Manage.py
    sample_app
@@ -287,7 +287,7 @@ sample_project/
 <p>Open models.py, we would be writing our model class inside models.py:</p>
 <p>Lets write a sample model.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
 from django.db import models
 
 class SampleTable(models.Model):
@@ -308,7 +308,7 @@ class SampleTable(models.Model):
 </pre></div>
 <p></p>
 <p>class SampleTable represents sample_table. The Class is inherited from models.Model class in django. The below codes represent columns of the table. There can be different types of columns in a database.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
    id      = models.AutoField(primary_key=True)
    name    = models.CharField(max_length=50, default="N/A")
    age     = models.IntegerField(default=18)
@@ -316,13 +316,13 @@ class SampleTable(models.Model):
 </pre></div>
 <p>Copy function save in the same format. Just replace SampleTable with your table Class name.</p>
 <p>If you want customized saving behavior, you can override this save() method. See Overriding predefined model methods for more details.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-43'>
    def save(self, *args, **kwargs):
        return super(SampleTable, self).save(*args, **kwargs)
 </pre></div>
 <p></p>
 <p>While the __unicode__ function is used when we want to fetch any row from database. When we fetch a row , the elements inside row is linked with a reference and through the reference we can fetch table row. We are passing id as reference for table</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
    def save(self, *args, **kwargs):
        return super(SampleTable, self).save(*args, **kwargs)
 
@@ -342,13 +342,13 @@ class SampleTable(models.Model):
 <p></p>
 <p>To create the database we need to do migrations and then have to apply the migrations.</p>
 <p>Open terminal and type following commands</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 python manage.py makemigrations sample_app
 </pre></div>
 <p></p>
 <p>The above command create migration. This is done to make sure all migrations before they are applied can be checked, Also it creates a migrations script inside migrations folder, python manage.py is the calling function while makemigrations is subcommand and sample_app is the name of the app for whom we want apply migrations for.</p>
 <p>After all migrations has successfully compiled, we will migrate</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 python manage.py migrate
 </pre></div>
 <p></p>
@@ -360,7 +360,7 @@ python manage.py migrate
 <p></p>
 <p>Open views.py and write the following code.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import json
@@ -395,13 +395,13 @@ def sample_db_test(requests):
 <p></p>
 <img src='../assets/images/api/2.png' class='image-tutorials'>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 @csrf_exempt
 def sample_db_test(requests):
 </pre></div>
 <p></p>
 <p>As you can see we had made a if else check on request.method to check what type of</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 ....
 ....
    if (requests.method == "GET"):
@@ -419,7 +419,7 @@ def sample_db_test(requests):
 <p></p>
 <p>Inside GET check method we are going to write this piece of code. We will write code for getting all objects from database.</p>
 <p></p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 # Grab all data from sample table. The table can be accessed using <TableName>.objects.all()
 
        response_obj = SampleTable.objects.all()
@@ -443,7 +443,7 @@ def sample_db_test(requests):
 
 </pre></div>
 <p>Inside POST check method we will write code to add any piece of data to our database.</p>
-<div class='code'><pre id='copy-code-1565507731-87'>
+<div class='code'><pre id='copy-code-1565721333-44'>
 
 # first we have to get body ( request data ) from our requests object,
 # we will further add this data to database,
